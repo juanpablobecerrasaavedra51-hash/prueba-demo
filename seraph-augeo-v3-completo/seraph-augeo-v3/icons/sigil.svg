@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="w" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff2cd" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#c9a961" stop-opacity=".05"/>
+    </linearGradient>
+    <radialGradient id="i" cx=".42" cy=".36" r=".72">
+      <stop offset="0" stop-color="#fff8e2"/><stop offset=".45" stop-color="#e8cf95"/><stop offset="1" stop-color="#8c6f33"/>
+    </radialGradient>
+  </defs>
+  <rect width="120" height="120" rx="24" fill="#08080c"/>
+  <g opacity=".92" stroke="#c9a961" stroke-width="1.05" fill="url(#w)">
+    <g transform="translate(60 60) rotate(196) scale(1.06)"><path d="M2 0C12 -6 26 -9.5 39 -7.4 40 -7.1 40 -6.6 38.6 -6.2 27 .4 13 4.6 2 1.6Z"/></g>
+    <g transform="translate(60 60) rotate(162) scale(.96)"><path d="M2 0C12 -6 26 -9.5 39 -7.4 40 -7.1 40 -6.6 38.6 -6.2 27 .4 13 4.6 2 1.6Z"/></g>
+    <g transform="translate(60 60) rotate(128) scale(.86)"><path d="M2 0C12 -6 26 -9.5 39 -7.4 40 -7.1 40 -6.6 38.6 -6.2 27 .4 13 4.6 2 1.6Z"/></g>
+    <g transform="translate(60 60) rotate(-16) scale(1.06)"><path d="M2 0C12 -6 26 -9.5 39 -7.4 40 -7.1 40 -6.6 38.6 -6.2 27 .4 13 4.6 2 1.6Z"/></g>
+    <g transform="translate(60 60) rotate(18) scale(.96)"><path d="M2 0C12 -6 26 -9.5 39 -7.4 40 -7.1 40 -6.6 38.6 -6.2 27 .4 13 4.6 2 1.6Z"/></g>
+    <g transform="translate(60 60) rotate(52) scale(.86)"><path d="M2 0C12 -6 26 -9.5 39 -7.4 40 -7.1 40 -6.6 38.6 -6.2 27 .4 13 4.6 2 1.6Z"/></g>
+  </g>
+  <ellipse cx="60" cy="27.5" rx="23" ry="5.6" fill="none" stroke="#e8cf95" stroke-width="1.2" stroke-opacity=".9"/>
+  <path d="M60 12.4 63.4 16 60 19.6 56.6 16Z" fill="#e8cf95"/>
+  <circle cx="60" cy="60" r="26.5" fill="none" stroke="#c9a961" stroke-width="1.2" stroke-opacity=".6"/>
+  <path d="M60 34.2C79.4 45.6 79.4 74.4 60 85.8 40.6 74.4 40.6 45.6 60 34.2Z" fill="#0c0c11" stroke="#e8cf95" stroke-width="1.6"/>
+  <circle cx="60" cy="60" r="9.6" fill="url(#i)"/>
+  <path d="M60 54.4 64 60 60 65.6 56 60Z" fill="#1a1408"/>
+</svg>

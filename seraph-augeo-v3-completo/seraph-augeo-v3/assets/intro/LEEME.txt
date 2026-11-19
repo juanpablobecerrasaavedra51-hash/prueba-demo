@@ -1,0 +1,2 @@
+Deja aqui angel.glb (o angel.gltf + sus .bin/texturas).
+El build lo incrusta en el HTML unico: la app no pide archivos ni usa servidor.

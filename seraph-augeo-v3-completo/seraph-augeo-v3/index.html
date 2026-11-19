@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es" data-phase="1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seraph Augeo · El ojo que recuerda lo que hiciste</title>
+<meta name="theme-color" content="#07070a">
+<meta name="description" content="Seraph Augeo: un sistema de metas que verifica lo que realmente hiciste. El ojo crece, el serafín despierta y el Ángel Guardián te dice la verdad.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/sigil.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/styles.css?v=4">
+</head>
+<body>
+  <div class="stage" aria-hidden="true">
+    <div class="stage-base"></div>
+    <div class="stage-tone"></div>
+    <div class="stage-arches"></div>
+    <div class="stage-aurora"></div>
+    <div class="stage-grain"></div>
+    <div class="stage-vignette"></div>
+  </div>
+  <div class="abyss is-off" id="abyss" aria-hidden="true"></div>
+
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="stage-fade" aria-hidden="true"></div>
+
+  <div id="introHost"></div>
+
+  <main id="app" class="shell" aria-live="polite"></main>
+  <nav id="tabs" class="tabbar" aria-label="Secciones"></nav>
+  <div id="modals"></div>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+
+  <noscript><p style="padding:24px;color:#e8e2d5;font-family:Georgia,serif">Seraph Augeo necesita JavaScript para verificar lo que haces. Actívalo y vuelve.</p></noscript>
+  <script src="./assets/engine.js?v=4"></script>
+  <script src="./assets/sigil.js?v=4"></script>
+  <script src="./assets/manifest.js?v=4"></script>
+  <script src="./assets/boot.js?v=4"></script>
+</body>
+</html>

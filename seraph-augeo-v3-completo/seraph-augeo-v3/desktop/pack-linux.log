@@ -1,0 +1,6 @@
+The server aborted pending request
+LINUX_FAIL_1
+
+Packaging app for platform linux x64 using electron v38.8.6
+Wrote new app to: dist\Seraph Augeo-linux-x64
+LINUX_OK

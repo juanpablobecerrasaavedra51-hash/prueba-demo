@@ -1,0 +1,21 @@
+  • electron-builder  version=26.18.0 os=10.0.26300
+  • loaded configuration  file=package.json ("build" field)
+  • executing @electron/rebuild  electronVersion=38.8.6 arch=x64 buildFromSource=false workspaceRoot=C:\Users\juanp\prueba demo\seraph-augeo-v3-completo\seraph-augeo-v3\desktop projectDir=./ appDir=./
+  • installing native dependencies  arch=x64
+  • completed installing native dependencies
+  • packaging       platform=win32 arch=x64 electron=38.8.6 appOutDir=dist\win-unpacked
+  • downloaded      label=electron progress=100%
+  • downloaded electron zip extracted successfully  output=C:\Users\juanp\prueba demo\seraph-augeo-v3-completo\seraph-augeo-v3\desktop\dist\win-unpacked
+  • searching for node modules  pm=npm searchDir=C:\Users\juanp\prueba demo\seraph-augeo-v3-completo\seraph-augeo-v3\desktop
+  • no node modules found in collection, trying next search directory  pm=npm searchDir=C:\Users\juanp\prueba demo\seraph-augeo-v3-completo\seraph-augeo-v3\desktop
+  • searching for node modules  pm=traversal searchDir=C:\Users\juanp\prueba demo\seraph-augeo-v3-completo\seraph-augeo-v3\desktop
+  • using manual traversal of node_modules to build dependency tree
+  • no node modules found in collection, trying next search directory  pm=traversal searchDir=C:\Users\juanp\prueba demo\seraph-augeo-v3-completo\seraph-augeo-v3\desktop
+  • no node modules returned while searching directories  searchDirectories=[""]
+  • updating asar integrity executable resource  executablePath=dist\win-unpacked\Seraph Augeo.exe
+  • downloaded      label=icons-bundle.tar.gz progress=100%
+  • no code signing certificate configured, signing is skipped  path=dist\win-unpacked\Seraph Augeo.exe
+  • building        target=portable file=dist\SeraphAugeo-3.1.0-portable.exe archs=x64
+  • no code signing certificate configured, signing is skipped  path=C:\Users\juanp\AppData\Local\Temp\t-q24jcv\elevate-staging-1\resources\elevate.exe
+  • no code signing certificate configured, signing is skipped  path=dist\SeraphAugeo-3.1.0-portable.exe
+EXIT=0

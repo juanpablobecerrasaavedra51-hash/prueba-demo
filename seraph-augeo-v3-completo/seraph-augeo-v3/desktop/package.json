@@ -1,0 +1,68 @@
+{
+  "name": "seraph-augeo-desktop",
+  "productName": "Seraph Augeo",
+  "version": "3.1.0",
+  "private": true,
+  "description": "Seraph Augeo de escritorio: el ojo que recuerda lo que hiciste, con IA en la nube o local.",
+  "main": "main.js",
+  "author": "Seraph Augeo",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win portable --x64",
+    "dist:win-installer": "electron-builder --win nsis --x64",
+    "pack:mac": "electron-packager . \"Seraph Augeo\" --platform=darwin --arch=arm64 --out=dist --overwrite --ignore=node_modules --ignore=dist --extra-resource=../seraph-augeo-v3.html",
+    "pack:mac-intel": "electron-packager . \"Seraph Augeo\" --platform=darwin --arch=x64 --out=dist --overwrite --ignore=node_modules --ignore=dist --extra-resource=../seraph-augeo-v3.html",
+    "pack:linux": "electron-packager . \"Seraph Augeo\" --platform=linux --arch=x64 --out=dist --overwrite --ignore=node_modules --ignore=dist --extra-resource=../seraph-augeo-v3.html",
+    "dist:mac": "electron-builder --mac dmg zip",
+    "dist:linux": "electron-builder --linux AppImage tar.gz"
+  },
+  "devDependencies": {
+    "@electron/packager": "^18.3.6",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.seraphaugeo.desktop",
+    "productName": "Seraph Augeo",
+    "copyright": "Seraph Augeo",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../seraph-augeo-v3.html",
+        "to": "app/seraph-augeo-v3.html"
+      }
+    ],
+    "win": {
+      "target": ["portable"],
+      "icon": "build/icon.png"
+    },
+    "portable": {
+      "artifactName": "SeraphAugeo-${version}-portable.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "SeraphAugeo-${version}-instalador.exe"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": ["AppImage", "tar.gz"],
+      "category": "Utility",
+      "icon": "build/icon.png"
+    }
+  }
+}

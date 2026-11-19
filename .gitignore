@@ -1,0 +1,27 @@
+# Dependencias instaladas
+node_modules/
+
+# Compilaciones de escritorio: binarios de Electron (cientos de MB)
+desktop/dist/
+desktop/vendor/
+**/desktop/dist/
+**/desktop/vendor/
+
+# Secretos y credenciales: NUNCA se suben
+apis
+.env
+.env.*
+*.key
+*.pem
+
+# Carpetas de Freebuff (chats, adjuntos)
+.freebuff/
+.cloud-attachments/
+
+# Modelo 3D original de 67 MB (la app usa assets/intro/angel.glb, 2 MB)
+modelo angel/
+
+# Paquetes generados
+*.zip
+*.tar.gz
+*.7z

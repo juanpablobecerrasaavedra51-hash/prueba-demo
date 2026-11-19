@@ -1,0 +1,90 @@
+SERAPH AUGeo v3 — El ojo que recuerda lo que hiciste
+=====================================================
+
+QUÉ HAY AQUÍ
+------------
+seraph-augeo-v3.html .... La app COMPLETA en un solo archivo (~4,1 MB).
+                          Ábrelo con doble clic (Chrome, Edge, Safari o Firefox).
+                          Funciona sin internet y sin instalar nada.
+                          Incluye el serafín en 3D y la intro: el modelo y
+                          three.js van dentro del archivo.
+
+desktop/dist/ ........... Versiones de escritorio ya compiladas:
+                          Windows  → SeraphAugeo-3.1.0-portable.exe
+                          macOS    → SeraphAugeo-3.1.0-mac-arm64.tar.gz (Apple
+                                     Silicon) y -mac-x64.tar.gz (Intel)
+                          Linux    → SeraphAugeo-3.1.0-linux-x64.tar.gz
+                          Extrae el tar.gz y abre la app. En Apple Silicon,
+                          si dice que está dañada: codesign --force --deep
+                          --sign - "Seraph Augeo.app". En Linux, si el
+                          sandbox protesta: ./"Seraph Augeo" --no-sandbox
+                          La versión de escritorio es la mejor para IA: habla
+                          con cualquier proveedor, también con modelos locales,
+                          sin que el navegador bloquee la petición.
+
+docs/ ................... MANUAL-TECNICO.md, MANUAL-DE-USUARIO.md y
+                          MANUAL-DE-DESPLIEGUE.md.
+README.md ............... Lo mismo, en formato web.
+
+assets/, icons/ ......... Código fuente por separado (para editar).
+assets/manifest.js ...... Lista ordenada de los 22 módulos de la interfaz.
+assets/ai/client.js ..... Motor de IA: 31 proveedores y perfiles.
+assets/ai/setup.js ...... La puerta de la Inteligencia.
+tests/ .................. 126 pruebas automáticas.
+
+LA PUERTA DE LA INTELIGENCIA
+----------------------------
+Al abrir la app por primera vez pide configurar la IA antes de entrar. Es a
+propósito: sin un proveedor validado el Guardián no puede preguntar ni evaluar.
+
+1. Elige un proveedor: 22 en la nube (OpenAI, Claude, Gemini, OpenRouter,
+   Groq, Mistral, DeepSeek, xAI, Together, Fireworks, Perplexity, Cerebras,
+   DeepInfra, Hyperbolic, Nebius, SambaNova, Novita, GitHub Models, Moonshot,
+   Z.ai, Qwen, SiliconFlow) u 8 locales (Ollama, LM Studio, llama.cpp, vLLM,
+   Jan, GPT4All, KoboldCpp, text-generation-webui), o "Otro" con tu URL.
+2. Escribe URL, modelo y clave (los locales no llevan clave).
+3. Pulsa "Probar conexión": la app hace una llamada REAL.
+4. Sólo si responde, "Continuar" se enciende. Guardar una clave no basta.
+
+Puedes guardar varios perfiles: basta con que uno funcione.
+
+IA LOCAL (GRATIS, SIN INTERNET)
+-------------------------------
+1. Instala Ollama (ollama.com).
+2. En una terminal:  ollama pull llama3.1:8b
+3. Comprueba que http://localhost:11434 responde.
+4. En la puerta elige Ollama, URL http://localhost:11434/v1, modelo
+   llama3.1:8b y pulsa "Probar conexión".
+
+Si dejas el modelo vacío, la app pregunta al servidor qué modelos tiene.
+
+PRIVACIDAD
+----------
+La clave se guarda SÓLO en este equipo y viaja únicamente al proveedor que
+elijas. Ningún servidor de la app la recibe: no hay servidor.
+El progreso vive en el navegador (localStorage) o en el perfil de la app de
+escritorio. Desde Ajustes > Descargar copia guardas todo en un JSON; hazlo cada
+semana, es lo único que lo devuelve si el navegador borra sus datos.
+
+COMPILAR
+--------
+node build.mjs                    regenera el HTML único
+bash tests/run-all.sh             todas las pruebas
+
+cd desktop
+npm install
+npm run dist:win                  .exe portable
+bash pack-platforms.sh            Linux x64 + macOS arm64 + macOS Intel
+                                  (descarga reanudable en desktop/vendor/)
+
+Detalles, firma de código y errores frecuentes en docs/MANUAL-DE-DESPLIEGUE.md.
+
+AVISOS AL ABRIR LOS BINARIOS
+----------------------------
+Los ejecutables no están firmados. Windows SmartScreen: "Más información" >
+"Ejecutar de todas formas". macOS: clic derecho sobre la app > Abrir > Abrir.
+
+NOTA HONESTA
+------------
+La verificación es una estimación transparente basada en evidencia, detalle,
+tiempo e historial. No es un detector de mentiras.

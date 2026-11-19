@@ -1,0 +1,6 @@
+
+> seraph-augeo-desktop@3.1.0 pack:mac-intel
+> electron-packager . "Seraph Augeo" --platform=darwin --arch=x64 --out=dist --overwrite --ignore=node_modules --ignore=dist --extra-resource=../seraph-augeo-v3.html
+
+The server aborted pending request
+EXIT_MACINTEL=1

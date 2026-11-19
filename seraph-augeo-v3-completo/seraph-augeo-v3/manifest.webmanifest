@@ -1,0 +1,15 @@
+{
+  "name": "Seraph Augeo",
+  "short_name": "Seraph",
+  "description": "El ojo que recuerda lo que hiciste. Metas verificadas, serafín que despierta y un Ángel Guardián que pregunta con sentido.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07070a",
+  "theme_color": "#07070a",
+  "lang": "es",
+  "icons": [
+    { "src": "./icons/sigil.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
