@@ -18,6 +18,26 @@ del navegador.
 
 ---
 
+## Descargas
+
+Última versión publicada: [**v3.1.0**](../../releases/latest)
+
+| Sistema | Archivo |
+|---|---|
+| **Windows** (x64) | `SeraphAugeo-3.1.0-portable.exe` — portable, no se instala |
+| **macOS** Apple Silicon (M1–M4) | `SeraphAugeo-3.1.0-mac-arm64.tar.gz` |
+| **macOS** Intel | `SeraphAugeo-3.1.0-mac-x64.tar.gz` |
+| **Linux** (x64) | `SeraphAugeo-3.1.0-linux-x64.tar.gz` |
+
+Los binarios no están firmados: Windows SmartScreen pedirá *Más información →
+Ejecutar de todas formas*, y en macOS puede hacer falta clic derecho → Abrir. En
+Linux, si el sandbox de Chromium se queja, añade `--no-sandbox`.
+
+También puedes abrir directamente el HTML sin instalar nada, o compilarlo tú
+mismo (ver más abajo).
+
+---
+
 ## Contenido del repositorio
 
 | Ruta | Qué es |
@@ -126,7 +146,8 @@ de `chrome-sandbox` en Linux, compresión con `pack-tar.py`, avisos de
 SmartScreen— están en [`docs/MANUAL-DE-DESPLIEGUE.md`](seraph-augeo-v3-completo/seraph-augeo-v3/docs/MANUAL-DE-DESPLIEGUE.md).
 
 Los binarios **no se versionan** (están en `.gitignore`): se regeneran con los
-comandos de arriba o se adjuntan a una *Release* de GitHub.
+comandos de arriba y se adjuntan a una *Release* de GitHub, como la de
+[v3.1.0](../../releases/tag/v3.1.0).
 
 ## Pruebas
 
