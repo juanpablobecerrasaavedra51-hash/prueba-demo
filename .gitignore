@@ -25,3 +25,7 @@ modelo angel/
 *.zip
 *.tar.gz
 *.7z
+
+# Logs sueltos de compilación (se regeneran en cada build)
+*.log
+!**/tests/**/*.log

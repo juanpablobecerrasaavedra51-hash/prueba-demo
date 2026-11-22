@@ -1,6 +1,0 @@
-
-> seraph-augeo-desktop@3.1.0 pack:mac
-> electron-packager . "Seraph Augeo" --platform=darwin --arch=arm64 --out=dist --overwrite --ignore=node_modules --ignore=dist --extra-resource=../seraph-augeo-v3.html
-
-read ECONNRESET
-EXIT_MAC=1
