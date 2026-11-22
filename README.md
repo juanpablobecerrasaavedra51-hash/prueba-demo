@@ -29,6 +29,8 @@ del navegador.
 | **macOS** Intel | `SeraphAugeo-3.1.0-mac-x64.tar.gz` |
 | **Linux** (x64) | `SeraphAugeo-3.1.0-linux-x64.tar.gz` |
 
+Integridad: cada archivo tiene su SHA-256 en `SHA256SUMS.txt`; descárgalo junto al binario y comprueba con `sha256sum -c SHA256SUMS.txt` (Windows/Linux) o `shasum -a 256 -c SHA256SUMS.txt` (macOS).
+
 Los binarios no están firmados: Windows SmartScreen pedirá *Más información →
 Ejecutar de todas formas*, y en macOS puede hacer falta clic derecho → Abrir. En
 Linux, si el sandbox de Chromium se queja, añade `--no-sandbox`.
