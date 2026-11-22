@@ -16,6 +16,10 @@ mantener encendido: la aplicación compilada es un solo archivo HTML que se abre
 con doble clic. El progreso y las claves de IA viven en el almacenamiento local
 del navegador.
 
+![Seraph Augeo: la pantalla de Hoy, con el siguiente paso elegido por el motor, sus factores y la cola del día](docs/captura-app.png)
+
+*La pantalla de **Hoy**: el motor elige la siguiente tarea, explica por qué y muestra los factores con los que la puntuó.*
+
 ---
 
 ## Descargas
