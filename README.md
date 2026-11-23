@@ -24,7 +24,7 @@ del navegador.
 
 ## Descargas
 
-Última versión publicada: [**v3.1.0**](../../releases/latest)
+Escritorio: [**v3.1.0**](../../releases/tag/v3.1.0) · Móvil: [**v3.2.0**](../../releases/tag/v3.2.0)
 
 | Sistema | Archivo |
 |---|---|
@@ -32,12 +32,19 @@ del navegador.
 | **macOS** Apple Silicon (M1–M4) | `SeraphAugeo-3.1.0-mac-arm64.tar.gz` |
 | **macOS** Intel | `SeraphAugeo-3.1.0-mac-x64.tar.gz` |
 | **Linux** (x64) | `SeraphAugeo-3.1.0-linux-x64.tar.gz` |
+| **Android** (7.0 o superior) | `SeraphAugeo-3.2.0-android.apk` — se instala desde la Release |
 
-Integridad: cada archivo tiene su SHA-256 en `SHA256SUMS.txt`; descárgalo junto al binario y comprueba con `sha256sum -c SHA256SUMS.txt` (Windows/Linux) o `shasum -a 256 -c SHA256SUMS.txt` (macOS).
+En iPhone y iPad no hay `.ipa`: compilarlo exige macOS con Xcode. Mientras
+tanto la app se añade a la pantalla de inicio desde **Safari → Compartir →
+Añadir a pantalla de inicio**, y arranca a pantalla completa con su icono.
+
+Integridad: cada archivo tiene su SHA-256 en el `SHA256SUMS.txt` de su Release; descárgalo junto al binario y comprueba con `sha256sum -c SHA256SUMS.txt` (Windows/Linux) o `shasum -a 256 -c SHA256SUMS.txt` (macOS).
 
 Los binarios no están firmados: Windows SmartScreen pedirá *Más información →
 Ejecutar de todas formas*, y en macOS puede hacer falta clic derecho → Abrir. En
-Linux, si el sandbox de Chromium se queja, añade `--no-sandbox`.
+Linux, si el sandbox de Chromium se queja, añade `--no-sandbox`. En Android, el
+APK se firma con una clave de sideload, así que hay que permitir «Instalar apps
+desconocidas» al abrirlo; no está en Google Play.
 
 También puedes abrir directamente el HTML sin instalar nada, o compilarlo tú
 mismo (ver más abajo).
@@ -48,7 +55,7 @@ mismo (ver más abajo).
 
 | Ruta | Qué es |
 |---|---|
-| `seraph-augeo-v3-completo/seraph-augeo-v3/` | **La aplicación.** Código fuente, compilación, pruebas, documentación y empaquetado de escritorio |
+| `seraph-augeo-v3-completo/seraph-augeo-v3/` | **La aplicación.** Código fuente, compilación, pruebas, documentación y empaquetado de escritorio y móvil |
 | `SKILLS.md` | Especificación funcional original: propósito, alcance del MVP y contexto del producto |
 | `prueba-demo/` | Carpeta de pruebas suelta, sin relación con la app |
 | `.gitignore` | Excluye dependencias, binarios de Electron, secretos y paquetes generados |
@@ -86,6 +93,10 @@ seraph-augeo-v3/
 │   ├── preload.js              Puente aislado hacia la página
 │   ├── pack-platforms.sh       Monta los paquetes de macOS y Linux
 │   └── pack-tar.py             Comprime con permisos y enlaces simbólicos correctos
+├── mobile/                     Envoltorio Android (WebView) y compilación del APK
+│   ├── android/                Manifiesto, actividad Java, iconos y tema
+│   ├── build-android.sh        aapt2 + javac + d8 + zipalign + apksigner
+│   └── LEEME.md                Cómo compilar el APK y por qué iOS no está aquí
 ├── tests/                      Motor, cliente de IA, humo de interfaz y arranque file://
 ├── tools/                      Preparación del GLB y visor 3D
 └── docs/                       Manuales técnico, de usuario y de despliegue
@@ -151,9 +162,23 @@ y monta los paquetes en `desktop/dist/`. Los detalles —firma en macOS, permiso
 de `chrome-sandbox` en Linux, compresión con `pack-tar.py`, avisos de
 SmartScreen— están en [`docs/MANUAL-DE-DESPLIEGUE.md`](seraph-augeo-v3-completo/seraph-augeo-v3/docs/MANUAL-DE-DESPLIEGUE.md).
 
+### El APK de Android
+
+```bash
+cd seraph-augeo-v3-completo/seraph-augeo-v3
+node build.mjs                  # el APK empaqueta este HTML
+bash mobile/build-android.sh    # deja mobile/dist/SeraphAugeo-<versión>-android.apk
+```
+
+`build-android.sh` no usa Gradle: encadena `aapt2`, `javac`, `d8`, `zipalign` y
+`apksigner` del SDK de Android. Necesita un JDK 17 o superior y `build-tools`
+con `platforms/android-36`. Los detalles están en
+[`mobile/LEEME.md`](seraph-augeo-v3-completo/seraph-augeo-v3/mobile/LEEME.md).
+
 Los binarios **no se versionan** (están en `.gitignore`): se regeneran con los
 comandos de arriba y se adjuntan a una *Release* de GitHub, como la de
-[v3.1.0](../../releases/tag/v3.1.0).
+[v3.1.0](../../releases/tag/v3.1.0) para escritorio y la de
+[v3.2.0](../../releases/tag/v3.2.0) para Android.
 
 ## Pruebas
 

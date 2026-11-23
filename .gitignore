@@ -26,6 +26,11 @@ modelo angel/
 *.tar.gz
 *.7z
 
+# Herramientas descargadas (JDK para compilar el APK) y salidas del build móvil
+.tools/
+**/mobile/build/
+**/mobile/dist/
+
 # Logs sueltos de compilación (se regeneran en cada build)
 *.log
 !**/tests/**/*.log
