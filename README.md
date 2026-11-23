@@ -24,15 +24,21 @@ del navegador.
 
 ## Descargas
 
-Escritorio: [**v3.1.0**](../../releases/tag/v3.1.0) · Móvil: [**v3.2.0**](../../releases/tag/v3.2.0)
+Escritorio y móvil: [**v3.3.0**](../../releases/tag/v3.3.0)
 
 | Sistema | Archivo |
 |---|---|
-| **Windows** (x64) | `SeraphAugeo-3.1.0-portable.exe` — portable, no se instala |
-| **macOS** Apple Silicon (M1–M4) | `SeraphAugeo-3.1.0-mac-arm64.tar.gz` |
-| **macOS** Intel | `SeraphAugeo-3.1.0-mac-x64.tar.gz` |
-| **Linux** (x64) | `SeraphAugeo-3.1.0-linux-x64.tar.gz` |
-| **Android** (7.0 o superior) | `SeraphAugeo-3.2.0-android.apk` — se instala desde la Release |
+| **Windows** (x64) | `SeraphAugeo-3.3.0-portable.exe` — portable, no se instala |
+| **macOS** Apple Silicon (M1–M4) | `SeraphAugeo-3.3.0-mac-arm64.tar.gz` |
+| **macOS** Intel | `SeraphAugeo-3.3.0-mac-x64.tar.gz` |
+| **Linux** (x64) | `SeraphAugeo-3.3.0-linux-x64.tar.gz` |
+| **Android** (7.0 o superior) | `SeraphAugeo-3.3.0-android.apk` — se instala desde la Release |
+
+**Nuevo en 3.3.0:** base de datos opcional para el progreso. En **Ajustes →
+Cuenta y base de datos** puedes conectar un proyecto Postgres (Supabase) y seguir
+el mismo progreso en el móvil, el PC y la web. Sin conectarlo, todo se guarda en
+el dispositivo como siempre. Los pasos están en la
+[sección 10 del README de la app](seraph-augeo-v3-completo/seraph-augeo-v3/README.md#10-base-de-datos-y-sincronización-opcional).
 
 En iPhone y iPad no hay `.ipa`: compilarlo exige macOS con Xcode. Mientras
 tanto la app se añade a la pantalla de inicio desde **Safari → Compartir →
@@ -177,8 +183,7 @@ con `platforms/android-36`. Los detalles están en
 
 Los binarios **no se versionan** (están en `.gitignore`): se regeneran con los
 comandos de arriba y se adjuntan a una *Release* de GitHub, como la de
-[v3.1.0](../../releases/tag/v3.1.0) para escritorio y la de
-[v3.2.0](../../releases/tag/v3.2.0) para Android.
+[v3.3.0](../../releases/tag/v3.3.0), que reúne escritorio y Android.
 
 ## Pruebas
 

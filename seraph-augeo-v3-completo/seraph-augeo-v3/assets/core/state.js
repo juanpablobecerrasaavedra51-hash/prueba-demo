@@ -69,6 +69,8 @@
 
   function save() {
     try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* modo privado */ }
+    /* Si hay cuenta en la nube, el mismo cambio se sube (con retardo). */
+    try { if (A.Cloud && A.Cloud.touch) A.Cloud.touch(); } catch (e) { /* sin nube */ }
   }
   function load() {
     try {

@@ -66,6 +66,10 @@ El progreso vive en el navegador (localStorage) o en el perfil de la app de
 escritorio. Desde Ajustes > Descargar copia guardas todo en un JSON; hazlo cada
 semana, es lo único que lo devuelve si el navegador borra sus datos.
 
+Opcional: en Ajustes > Cuenta y base de datos puedes conectar un proyecto
+Postgres (Supabase) para que el mismo progreso siga en el movil, el PC y la web.
+Cada cuenta solo puede leer su propia fila. Sin conectar nada, no se envia nada.
+
 COMPILAR
 --------
 node build.mjs                    regenera el HTML único

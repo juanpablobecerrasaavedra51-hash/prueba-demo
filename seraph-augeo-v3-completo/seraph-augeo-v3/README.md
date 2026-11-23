@@ -29,9 +29,9 @@ escritorio.
 
 | Sistema | Qué abrir |
 |---|---|
-| Windows | `desktop/dist/SeraphAugeo-3.1.0-portable.exe` (portable, sin instalar) |
-| macOS | `desktop/dist/SeraphAugeo-3.1.0-mac-arm64.tar.gz` (Apple Silicon) o `-mac-x64.tar.gz` (Intel) |
-| Linux | `desktop/dist/SeraphAugeo-3.1.0-linux-x64.tar.gz` |
+| Windows | `desktop/dist/SeraphAugeo-3.3.0-portable.exe` (portable, sin instalar) |
+| macOS | `desktop/dist/SeraphAugeo-3.3.0-mac-arm64.tar.gz` (Apple Silicon) o `-mac-x64.tar.gz` (Intel) |
+| Linux | `desktop/dist/SeraphAugeo-3.3.0-linux-x64.tar.gz` |
 
 En macOS y Linux, extrae el `tar.gz` y abre la app. En Apple Silicon, si macOS
 dice que la app está dañada (se empaquetó fuera del Mac, sin firma), ejecuta una
@@ -44,7 +44,7 @@ así que **no hay CORS**: funcionan todos los proveedores, también los locales.
 ### Regenerar el archivo único
 
 ```bash
-node build.mjs          # ~4,1 MB, 22 módulos incrustados
+node build.mjs          # ~4,1 MB, 23 módulos incrustados
 ```
 
 `build.mjs` lee `assets/manifest.js`, así que un módulo nuevo se empaqueta solo.
@@ -103,12 +103,13 @@ primero disponible.
 | `assets/boot.js` | Cargador: inyecta los módulos en orden y arranca el núcleo |
 | `index.html` | Declara motor, sello, manifiesto y cargador |
 
-### La interfaz, módulo a módulo (22)
+### La interfaz, módulo a módulo (23)
 
 | Módulo | Qué hace |
 |---|---|
 | `assets/core/dom.js` | Utilidades DOM, fechas, iconos SVG |
 | `assets/core/state.js` | Estado, guardado/carga en `localStorage`, eventos |
+| `assets/core/cloud.js` | **Cuenta y base de datos**: auth, esquema de sincronización y panel de Ajustes |
 | `assets/core/economy.js` | Nivel, fase, racha, XP, monedas, resumen |
 | `assets/data/plans.js` | Áreas y plantillas: 3 hitos, 9 tareas, hábito sugerido |
 | `assets/ai/client.js` | **Motor de IA**: 31 proveedores, perfiles, sondeo real, caché, presupuesto, IPC |
@@ -230,7 +231,42 @@ bash tests/run-all.sh         # todo junto → «Todo en verde»
 
 ---
 
-## 10. Seguridad y privacidad
+## 10. Base de datos y sincronización (opcional)
+
+La app guarda siempre primero en el dispositivo. Si además conectas una cuenta,
+el mismo progreso se guarda en una base de datos Postgres (Supabase) y se
+concilia entre web, escritorio y Android. Sin cuenta no se envía nada a ninguna
+parte y todo sigue funcionando sin internet.
+
+**Qué se guarda:** el estado completo en una fila por cuenta (`public.saves`,
+columna `state` de tipo `jsonb`): XP, nivel, fase, racha, metas, tareas, hábitos,
+días, cofres, artefactos, misiones, logros, verificaciones, historial y ajustes.
+La clave de IA **no** se sube: sigue sólo en el dispositivo.
+
+**Ponerlo en marcha (una vez, ~5 minutos):**
+
+1. Crea un proyecto gratis en [supabase.com](https://supabase.com).
+2. SQL Editor → New query → pega [`docs/supabase.sql`](docs/supabase.sql) → Run.
+   Crea la tabla, el disparador de fecha y las políticas RLS.
+3. Project Settings → API: copia **Project URL** y la clave **anon / publishable**.
+4. En la app: Ajustes → **Cuenta y base de datos** → pega ambas → **Conectar servidor**.
+5. **Crear cuenta** con correo y contraseña (o **Entrar** si ya la tienes).
+
+Si el proyecto exige confirmar el correo, revisa la bandeja y después entra.
+
+**Cómo sincroniza:** cada cambio se escribe en local y se sube ~1,5 s después.
+Al abrir la app se concilia: si la nube tiene un cambio más reciente, se aplica y
+se avisa; si este equipo tiene cambios sin subir, se suben. No hay fusión campo a
+campo — gana el guardado más reciente, así que evita editar lo mismo en dos
+dispositivos a la vez.
+
+**Seguridad:** la clave pública viaja en el cliente, pero Row Level Security hace
+que cada cuenta sólo pueda leer y escribir su propia fila (`auth.uid() =
+user_id`). La contraseña la cifra Supabase; la app sólo guarda el token de sesión.
+
+---
+
+## 11. Seguridad y privacidad
 
 - Las claves de IA viven **sólo** en `localStorage` de tu equipo y viajan
   únicamente al proveedor que elijas. No hay servidor de la app que las reciba.
@@ -238,18 +274,19 @@ bash tests/run-all.sh         # todo junto → «Todo en verde»
   tope de gasto y ámbito restringido.
 - En escritorio, `contextIsolation` activo, sin Node en la página, navegación
   externa derivada al navegador del sistema y peticiones limitadas a 4 MB.
-- Progreso en `localStorage`, exportable e importable en JSON. Sin cuentas, sin
-  correo, sin analítica, sin publicidad.
+- Progreso en `localStorage` y, si conectas una cuenta, en tu propia base de
+  datos Postgres. Exportable e importable en JSON. Sin analítica, sin publicidad.
+- La clave de IA nunca se sube a la base de datos: sólo viaja al proveedor.
 
 ---
 
-## 11. Límites declarados
+## 12. Límites declarados
 
 - La verificación es una **heurística** transparente: evidencia, detalle, tiempo
   e historial. No lee tu mente.
 - La IA puede caerse (503 de Gemini, 429 en planes gratuitos). Por eso el motor
   local es de primera clase y la app lo dice en pantalla.
-- Sin sincronización entre dispositivos: el progreso vive en un equipo.
+- Sin cuenta conectada, no hay sincronización: el progreso vive en un equipo.
 - El plan «Serafín» de la pantalla de planes está anunciado, **no cobrado**.
 - Los binarios no están firmados: macOS pedirá clic derecho → Abrir y Windows
   SmartScreen advertirá.

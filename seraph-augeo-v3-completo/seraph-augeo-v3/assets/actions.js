@@ -89,7 +89,7 @@
     const bk = backupStatus();
     openModal(`
       <h2 class="modal-title">Ajustes</h2>
-      <p class="modal-sub">Todo vive en tu navegador. Puedes exportarlo o borrarlo cuando quieras.</p>
+      <p class="modal-sub">Se guarda en este equipo y, si conectas tu cuenta, también en tu base de datos. Puedes exportarlo o borrarlo cuando quieras.</p>
       <div class="field"><label>Tu nombre</label>
         <input class="input" id="sName" maxlength="24" value="${esc(S.name)}" placeholder="Cómo te llama el ojo"></div>
       <div class="field"><label>El Guardián (IA)</label>
@@ -102,6 +102,7 @@
       <div class="field"><label>Clave de IA (Gemini u OpenRouter)</label>
         ${aiKeyMarkup()}
       </div>
+      ${A.Cloud ? A.Cloud.panel() : ''}
       <div class="field"><label>Movimiento</label>
         <button class="opt ${S.settings.motion ? 'on' : ''}" data-act="toggleMotion">
           <span class="opt-mark"></span>
@@ -118,7 +119,7 @@
       </div>
       <p class="hint ${bk.stale ? 'err' : ''}">${esc(bk.text)}${bk.stale ? ' Si limpias el navegador, se pierde todo el progreso.' : ' Guardado fuera del navegador, ese archivo es tu respaldo.'}</p>
       <div class="divider"><i></i></div>
-      <p class="tiny dim">Seraph Augeo v3 · El ojo no miente, pero tampoco es un detector de mentiras. La verificación es una estimación honesta y transparente, no una prueba judicial. Tu clave de IA se queda en este navegador; no hay servidor que la reciba.</p>
+      <p class="tiny dim">Seraph Augeo v3 · El ojo no miente, pero tampoco es un detector de mentiras. La verificación es una estimación honesta y transparente, no una prueba judicial. Tu clave de IA se queda en este navegador; si conectas una cuenta, sólo el progreso viaja a tu base de datos.</p>
       <button class="btn btn-block mt-16" data-act="closeModal">Cerrar</button>
     `);
   }
@@ -431,7 +432,8 @@
         closeModal(); return;
       }
       default:
-        /* La configuración de IA vive en assets/ai/setup.js. */
+        /* La cuenta vive en assets/core/cloud.js y la IA en assets/ai/setup.js. */
+        if (A.Cloud && A.Cloud.isAction(act)) { A.Cloud.handle(act, el); return; }
         if (A.AISetup && A.AISetup.handle(act, el)) return;
         return;
     }

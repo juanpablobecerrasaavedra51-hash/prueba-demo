@@ -5,6 +5,7 @@
 window.SERAPH_MODULES = [
   'core/dom.js',        /* utilidades, formato, iconos, motor y sello */
   'core/state.js',      /* estado y localStorage */
+  'core/cloud.js',      /* cuenta y base de datos en la nube (opcional) */
   'core/economy.js',    /* nivel, fase, racha, XP, monedas */
   'data/plans.js',      /* áreas y plantillas de plan */
   'ai/client.js',       /* Guardián sin servidor: Gemini u OpenRouter desde el navegador */

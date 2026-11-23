@@ -1,7 +1,7 @@
 {
   "name": "seraph-augeo-desktop",
   "productName": "Seraph Augeo",
-  "version": "3.1.0",
+  "version": "3.3.0",
   "private": true,
   "description": "Seraph Augeo de escritorio: el ojo que recuerda lo que hiciste, con IA en la nube o local.",
   "main": "main.js",

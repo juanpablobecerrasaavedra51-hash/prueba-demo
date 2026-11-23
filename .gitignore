@@ -29,6 +29,9 @@ modelo angel/
 # Herramientas descargadas (JDK para compilar el APK) y salidas del build móvil
 .tools/
 **/mobile/build/
+**/desktop/dist-db/
+**/desktop/dist-new/
+**/desktop/*.log
 **/mobile/dist/
 
 # Logs sueltos de compilación (se regeneran en cada build)
